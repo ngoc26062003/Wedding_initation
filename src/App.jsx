@@ -14,6 +14,7 @@ export default function App() {
   // State quản lý form RSVP
   const [rsvpForm, setRsvpForm] = useState({ name: '', phone: '', attend: '', guests: '' });
   const [rsvpSuccess, setRsvpSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // State quản lý đếm ngược thời gian
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -74,15 +75,40 @@ export default function App() {
   };
 
   // Xử lý gửi RSVP
-  const submitRSVP = () => {
+  const submitRSVP = async () => {
     if (!rsvpForm.name || !rsvpForm.attend) {
       alert('Vui lòng điền đầy đủ thông tin trước khi gửi.');
       return;
     }
-    setRsvpSuccess(true);
-    setRsvpForm({ name: '', phone: '', attend: '', guests: '' });
-    canvasControls.current.burstPetals(60);
-    setTimeout(() => setRsvpSuccess(false), 5000);
+
+    setIsSubmitting(true);
+
+    try {
+      // Thay YOUR_WEB_APP_URL bằng Web App URL lấy từ Google Apps Script
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyc-r45KuriCVSKFfRxaTixzbS7FF18XrI-2AB8zQYxYAK9aPAUyUS37BkvYa6IiyQWiw/exec';
+      
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(rsvpForm),
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        }
+      });
+
+      if (response.ok) {
+        setRsvpSuccess(true);
+        setRsvpForm({ name: '', phone: '', attend: '', guests: '' });
+        canvasControls.current.burstPetals(60);
+        setTimeout(() => setRsvpSuccess(false), 5000);
+      } else {
+        alert('Có lỗi xảy ra khi gửi. Vui lòng thử lại sau.');
+      }
+    } catch (error) {
+      console.error('Lỗi khi gửi RSVP:', error);
+      alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Logic cuộn hiện nội dung (Scroll Reveal)
@@ -358,10 +384,11 @@ export default function App() {
           <div className="gold-line"></div>
           <div className="story-card">
             <p className="story-text">
-              Chúng tôi gặp nhau trong một buổi chiều mưa tháng Ba, tại một quán cà phê nhỏ ở góc phố.
-              Một ánh mắt tình cờ, một nụ cười bẽn lẽn, và từ đó cuộc đời chúng tôi đã gắn kết lại với nhau
-              theo cách kỳ diệu nhất. Ba năm bên nhau, qua biết bao kỷ niệm đẹp, chúng tôi quyết định
-              cùng nhau bước vào một chương mới của cuộc đời — với trái tim rộn ràng và tình yêu trọn vẹn.
+              Chúng tôi gặp nhau vào một ngày tháng Hai dịu dàng, tại một quán cà phê nhỏ thân quen. 
+              Một cuộc gặp gỡ tưởng chừng như bình thường nhưng lại trở thành khởi đầu cho một hành trình đầy yêu thương. 
+              Từ những câu chuyện đầu tiên, những lần sẻ chia giản dị, chúng tôi dần trở thành một phần không thể thiếu trong cuộc sống của nhau.
+              Hơn hai năm bên cạnh nhau, cùng đi qua những niềm vui, những thử thách và vô vàn kỷ niệm đáng nhớ, chúng tôi đã học cách yêu thương, thấu hiểu và trân trọng nhau nhiều hơn mỗi ngày. 
+              Và hôm nay, với tất cả sự chân thành và hạnh phúc, chúng tôi quyết định nắm tay nhau bước sang một chặng đường mới của cuộc đời — nơi tình yêu được viết tiếp bằng những ước mơ và hy vọng về một mái ấm chung.
             </p>
             <p className="story-signature">Văn Đạt &amp; Thùy Linh</p>
           </div>
@@ -387,7 +414,7 @@ export default function App() {
                 <img src="./pic/co-dau.jpg" alt="Cô dâu Thùy Linh" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <h3 className="couple-name">Nguyễn Thị Thùy Linh</h3>
-              <p className="couple-desc"><em>(Út Nợ)</em><br />Con gái của<br /><em>Ông Nguyễn Xuân Phú &amp; Bà Nguyễn Thị Mộng</em></p>
+              <p className="couple-desc"><em>(Út Nữ)</em><br />Con gái của<br /><em>Ông Nguyễn Xuân Phú &amp; Bà Nguyễn Thị Mộng</em></p>
             </div>
           </div>
         </div></div>
@@ -400,9 +427,9 @@ export default function App() {
           <div className="gold-line"></div>
           <div className="timeline-wrapper">
             <div className="timeline">
-              <div className="tl-item"><div className="tl-dot"></div><div className="tl-content"><p className="tl-date">Tháng 3, 2022</p><h4 className="tl-title">Lần đầu gặp gỡ</h4><p className="tl-desc">Trong quán cà phê nhỏ, dưới cơn mưa chiều.</p></div></div>
-              <div className="tl-item"><div className="tl-dot"></div><div className="tl-content"><p className="tl-date">Tháng 6, 2022</p><h4 className="tl-title">Chính thức hẹn hò</h4><p className="tl-desc">Anh trao em bó hoa hồng đầu tiên.</p></div></div>
-              <div className="tl-item"><div className="tl-dot"></div><div className="tl-content"><p className="tl-date">Tháng 1, 2024</p><h4 className="tl-title">Cầu hôn</h4><p className="tl-desc">Dưới ánh đèn lấp lánh, anh quỳ xuống và hỏi: "Em lấy anh nhé?"</p></div></div>
+              <div className="tl-item"><div className="tl-dot"></div><div className="tl-content"><p className="tl-date">Tháng 2, 2024</p><h4 className="tl-title">Lần đầu gặp gỡ</h4><p className="tl-desc">Trong quán cà phê nhỏ, dưới cơn mưa chiều.</p></div></div>
+              <div className="tl-item"><div className="tl-dot"></div><div className="tl-content"><p className="tl-date">Tháng 3, 2024</p><h4 className="tl-title">Chính thức hẹn hò</h4><p className="tl-desc">Anh trao em bó hoa hồng đầu tiên.</p></div></div>
+              <div className="tl-item"><div className="tl-dot"></div><div className="tl-content"><p className="tl-date">Tháng 9, 2024</p><h4 className="tl-title">Cầu hôn</h4><p className="tl-desc">Dưới ánh đèn lấp lánh, anh quỳ xuống và hỏi: "Em lấy anh nhé?"</p></div></div>
               <div className="tl-item"><div className="tl-dot"></div><div className="tl-content"><p className="tl-date">Tháng 7, 2026</p><h4 className="tl-title">Lễ cưới</h4><p className="tl-desc">Ngày chúng tôi chính thức trở thành một gia đình.</p></div></div>
             </div>
           </div>
@@ -478,7 +505,9 @@ export default function App() {
                 <option value="3">3 người</option>
                 <option value="4">4 người trở lên</option>
               </select>
-              <button className="rsvp-btn" onClick={submitRSVP}>Gửi xác nhận ✉</button>
+              <button className="rsvp-btn" onClick={submitRSVP} disabled={isSubmitting} style={{ opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}>
+                {isSubmitting ? 'Đang gửi...' : 'Gửi xác nhận ✉'}
+              </button>
               {rsvpSuccess && <div className="rsvp-success" style={{ display: 'block' }}>🌸 Cảm ơn bạn rất nhiều! Chúng tôi rất vui được gặp bạn! 🌸</div>}
             </div>
           </div>
