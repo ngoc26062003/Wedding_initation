@@ -376,7 +376,7 @@ export default function App() {
           <div className="couple-grid">
             <div className="couple-card">
               <div className="couple-avatar" style={{ padding: 0, overflow: 'hidden', border: '4px solid white' }}>
-                <img src="/pic/chu-re.jpg" alt="Chú rể Văn Đạt" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="./pic/chu-re.jpg" alt="Chú rể Văn Đạt" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <h3 className="couple-name">Trần Văn Đạt</h3>
               <p className="couple-desc"><em>(Út Nam)</em><br />Con trai của<br /><em>Bà Bùi Thị Thu</em></p>
@@ -384,7 +384,7 @@ export default function App() {
             <div className="couple-heart">♥</div>
             <div className="couple-card">
               <div className="couple-avatar" style={{ padding: 0, overflow: 'hidden', border: '4px solid white' }}>
-                <img src="/pic/co-dau.jpg" alt="Cô dâu Thùy Linh" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="./pic/co-dau.jpg" alt="Cô dâu Thùy Linh" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <h3 className="couple-name">Nguyễn Thị Thùy Linh</h3>
               <p className="couple-desc"><em>(Út Nợ)</em><br />Con gái của<br /><em>Ông Nguyễn Xuân Phú &amp; Bà Nguyễn Thị Mộng</em></p>
@@ -415,10 +415,6 @@ export default function App() {
           <p className="section-sub">Wedding details</p>
           <div className="gold-line"></div>
           <div className="event-cards">
-            <div className="event-card"><div className="event-icon">🌸</div><h3 className="event-card-title">Lễ Vu Quy</h3><p><strong>Tại nhà gái</strong><br /><strong>Xã Xuân Tây, Huyện Cẩm Mỹ<br />Tỉnh Đồng Nai</strong></p></div>
-            <div className="event-heart-separator">♥</div>
-            <div className="event-card"><div className="event-icon">💍</div><h3 className="event-card-title">Lễ Thành Hôn</h3><p><strong>Tại nhà trai</strong><br /><strong>Xã Thanh Xuân, Huyện Thanh Chương<br />Tỉnh Nghệ An</strong></p></div>
-            <div className="event-heart-separator">♥</div>
             <div className="event-card">
               <div className="event-icon">🥂</div><h3 className="event-card-title">Tiệc Báo Hỷ</h3><p><strong>18:00 tối</strong><br />Thứ Bảy, 04/07/2026<br /><br />Trung tâm tiệc cưới <strong>Nguyên Trang</strong><br /><strong>E26, 90 đường Đồng Khởi, Kp 3, phường Trảng Dài, TP. Đồng Nai</strong></p>
               <a href="https://maps.app.goo.gl/VFRdPth5GvY2fzaz5" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '15px', padding: '10px 20px', backgroundColor: '#c8708a', color: '#fff', textDecoration: 'none', borderRadius: '25px', fontWeight: 'bold', fontSize: '0.9rem', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>📍 Hướng dẫn di chuyển</a>
@@ -430,7 +426,7 @@ export default function App() {
       <section className="gallery-section" id="gallery" style={{ position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', top: '-20px', left: '-20px', right: '-20px', bottom: '-20px',
-          background: 'url(/pic/2aoboqbtm4g7w5gbcbjxl2nuqndjgi8mociwp0763.jpg) center/cover no-repeat', filter: 'blur(15px)', opacity: 0.15, zIndex: 0
+          background: 'url(./pic/2aoboqbtm4g7w5gbcbjxl2nuqndjgi8mociwp0763.jpg) center/cover no-repeat', filter: 'blur(15px)', opacity: 0.15, zIndex: 0
         }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}><div className="reveal">
           <h2 className="section-title">Kỷ niệm bên nhau</h2>
@@ -438,22 +434,22 @@ export default function App() {
           <div className="gold-line"></div>
           <div className="scrolling-gallery">
             <div className="gallery-cell">
-              <img src="/pic/7.jpg" alt="Ảnh cưới 2" loading="lazy" />
+              <img src="./pic/7.jpg" alt="Ảnh cưới 2" loading="lazy" />
             </div>
             <div className="gallery-cell">
-              <img src="/pic/2aoboqbtmbsf19ayophhz9khimz9cz7ai7fz4cd614.jpg" alt="Ảnh cưới 3" loading="lazy" />
+              <img src="./pic/2aoboqbtmbsf19ayophhz9khimz9cz7ai7fz4cd614.jpg" alt="Ảnh cưới 3" loading="lazy" />
             </div>
             <div className="gallery-cell">
-              <img src="/pic/2aoboqbtm8h61smwjexbcyzxnpamlffjaiypd8wc9.jpg" alt="Ảnh cưới 4" loading="lazy" />
+              <img src="./pic/2aoboqbtm8h61smwjexbcyzxnpamlffjaiypd8wc9.jpg" alt="Ảnh cưới 4" loading="lazy" />
             </div>
             <div className="gallery-cell">
-              <img src="/pic/2.jpg" alt="Ảnh cưới 5" loading="lazy" />
+              <img src="./pic/2.jpg" alt="Ảnh cưới 5" loading="lazy" />
             </div>
             <div className="gallery-cell">
-              <img src="/pic/1.jpg" alt="Ảnh cưới 5" loading="lazy" />
+              <img src="./pic/1.jpg" alt="Ảnh cưới 5" loading="lazy" />
             </div>
             <div className="gallery-cell">
-              <img src="/pic/3.jpg" alt="Ảnh cưới 5" loading="lazy" />
+              <img src="./pic/3.jpg" alt="Ảnh cưới 5" loading="lazy" />
             </div>
           </div>
         </div></div>
